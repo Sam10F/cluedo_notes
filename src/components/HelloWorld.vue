@@ -1,38 +1,71 @@
-<script setup lang="ts">
-import { ref } from 'vue';
-
-defineProps<{ msg: string }>();
-
-const count = ref(0);
-</script>
-
 <template>
-  <h1>{{ msg }}</h1>
-
-  <div class="card">
-    <button type="button" @click="count++">count is {{ count }}</button>
-    <p>
-      Edit
-      <code>components/HelloWorld.vue</code> to test HMR
-    </p>
+  <div class="va-table-responsive">
+    <table class="va-table">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Email</th>
+          <th>Country</th>
+          <th>Status</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr v-for="user in users" :key="user.id">
+          <td>{{ user.fullName }}</td>
+          <td>{{ user.email }}</td>
+          <td>{{ user.country }}</td>
+          <td>
+            <VaBadge :text="user.status" :color="user.status" />
+          </td>
+        </tr>
+      </tbody>
+    </table>
   </div>
-
-  <p>
-    Check out
-    <a href="https://vuejs.org/guide/quick-start.html#local" target="_blank"
-      >create-vue</a
-    >, the official Vue + Vite starter
-  </p>
-  <p>
-    Install
-    <a href="https://github.com/vuejs/language-tools" target="_blank">Volar</a>
-    in your IDE for a better DX
-  </p>
-  <p class="read-the-docs">Click on the Vite and Vue logos to learn more</p>
 </template>
 
-<style scoped>
-.read-the-docs {
-  color: #888;
+<script lang="ts">
+import { defineComponent } from 'vue';
+
+export default defineComponent({
+  data() {
+    return {
+      users: [
+        {
+          id: 1,
+          fullName: 'Ashley Mcdaniel',
+          email: 'ashleymcdaniel@nebulean.com',
+          country: 'Cayman Islands',
+          status: 'warning',
+        },
+        {
+          id: 2,
+          fullName: 'Todd Sellers',
+          email: 'sellerstodd@nebulean.com',
+          country: 'Togo',
+          status: 'info',
+        },
+        {
+          id: 3,
+          fullName: 'Sherman Knowles',
+          email: 'shermanknowles@nebulean.com',
+          country: 'Central African Republic',
+          status: 'warning',
+        },
+        {
+          id: 4,
+          fullName: 'Vasquez Lawson',
+          email: 'vasquezlawson@nebulean.com',
+          country: 'Bouvet Island',
+          status: 'info',
+        },
+      ],
+    };
+  },
+});
+</script>
+
+<style>
+.va-table-responsive {
+  overflow: auto;
 }
 </style>
