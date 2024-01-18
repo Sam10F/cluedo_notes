@@ -38,6 +38,13 @@ export default defineConfig({
       },
     }),
   ],
+  css: {
+    preprocessorOptions: {
+      scss: {
+        additionalData: `@import "∼/common/scss/variables.scss";`,
+      },
+    },
+  },
   resolve: {
     alias: [{ find: '∼', replacement: path.resolve(__dirname, 'src') }],
   },
