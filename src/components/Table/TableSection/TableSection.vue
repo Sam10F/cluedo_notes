@@ -1,6 +1,8 @@
 <script setup lang="ts">
 import { ITableSection } from './ITableSection';
 
+import TableSectionSquare from './TableSectionSquare/TableSectionSquare.vue';
+
 defineProps<ITableSection>();
 </script>
 <template>
@@ -10,7 +12,7 @@ defineProps<ITableSection>();
   </tr>
   <tr v-for="(row, i) in rows" :key="i">
     <th class="SectionValue">{{ row.label }}</th>
-    <td v-for="i in columnNumber" :key="i"></td>
+    <TableSectionSquare v-for="i in columnNumber" :key="i" />
   </tr>
 </template>
 <style lang="scss">
@@ -18,6 +20,12 @@ defineProps<ITableSection>();
   .SectionValue {
     font-weight: 500;
     border-bottom: 0;
+
+    & ~ td {
+      padding: 0;
+      min-width: 50px;
+      border-left: 1px solid;
+    }
   }
 
   .SectionTitle {
@@ -32,8 +40,6 @@ defineProps<ITableSection>();
   }
 
   td {
-    min-width: 50px;
-    border-left: 1px solid;
   }
 
   &--striped {

@@ -17,7 +17,7 @@ export default defineConfig({
         start_url: '/',
         short_name: 'CluedoNotes',
         description: 'Add your cluedo notes here and win the game!',
-        theme_color: '#031c36',
+        theme_color: '#dcdcdc',
         icons: [
           {
             src: '/cluedo_icon-180x180.png',
