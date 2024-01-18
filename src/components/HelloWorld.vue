@@ -1,68 +1,25 @@
-<template>
-  <div class="va-table-responsive">
-    <table class="va-table">
-      <thead>
-        <tr>
-          <th>Name</th>
-          <th>Email</th>
-          <th>Country</th>
-          <th>Status</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr v-for="user in users" :key="user.id">
-          <td>{{ user.fullName }}</td>
-          <td>{{ user.email }}</td>
-          <td>{{ user.country }}</td>
-          <td>
-            <VaBadge :text="user.status" :color="user.status" />
-          </td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
-</template>
-
-<script lang="ts">
-import { defineComponent } from 'vue';
-
-export default defineComponent({
-  data() {
-    return {
-      users: [
-        {
-          id: 1,
-          fullName: 'Ashley Mcdaniel',
-          email: 'ashleymcdaniel@nebulean.com',
-          country: 'Cayman Islands',
-          status: 'warning',
-        },
-        {
-          id: 2,
-          fullName: 'Todd Sellers',
-          email: 'sellerstodd@nebulean.com',
-          country: 'Togo',
-          status: 'info',
-        },
-        {
-          id: 3,
-          fullName: 'Sherman Knowles',
-          email: 'shermanknowles@nebulean.com',
-          country: 'Central African Republic',
-          status: 'warning',
-        },
-        {
-          id: 4,
-          fullName: 'Vasquez Lawson',
-          email: 'vasquezlawson@nebulean.com',
-          country: 'Bouvet Island',
-          status: 'info',
-        },
-      ],
-    };
-  },
-});
+<script setup lang="ts">
+import MainTable from './Table/MainTable.vue';
+import defaultWho from '∼/data/defaultWho.json';
+import defaultWeapon from '∼/data/defaultWeapons.json';
+import defaultWhere from '∼/data/defaultWhere.json';
 </script>
+
+<template>
+  <MainTable
+    :players="[
+      { id: 1, name: '' },
+      { id: 2, name: 'Samuel' },
+      { id: 3, name: 'Marta' },
+      { id: 4, name: 'Diego' },
+      { id: 5, name: 'Daniel' },
+      { id: 6, name: 'Javi' },
+    ]"
+    :who="defaultWho"
+    :weapon="defaultWeapon"
+    :where="defaultWhere"
+  />
+</template>
 
 <style>
 .va-table-responsive {
