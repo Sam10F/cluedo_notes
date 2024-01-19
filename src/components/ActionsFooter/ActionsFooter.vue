@@ -2,11 +2,15 @@
 import { ref } from 'vue';
 import { VaModal, VaButton } from 'vuestic-ui';
 import html2canvas from 'html2canvas';
+import { router } from '∼/router';
 
-const showModal = ref<boolean>(false);
+const showBigScreenModal = ref<boolean>(false);
+const showCleanNotesModal = ref<boolean>(false);
+const showFinishGameModal = ref<boolean>(false);
+
 const imgUrl = ref<string>();
 
-const visibilityButtonClicked = () => {
+const showBigScreenButtonClicked = () => {
   const mainTable = document.getElementById('MainTable');
   if (mainTable) {
     html2canvas(mainTable).then(function (canvas: HTMLCanvasElement) {
@@ -15,29 +19,80 @@ const visibilityButtonClicked = () => {
           const blobUrl = URL.createObjectURL(blob);
           imgUrl.value = blobUrl;
 
-          showModal.value = true;
+          showBigScreenModal.value = true;
         }
       });
     });
   }
 };
+
+const cleanNotesButtonClicked = () => {
+  showCleanNotesModal.value = true;
+};
+
+const clearNotes = () => {
+  router.go(0);
+};
+
+const finishGameButtonClicked = () => {
+  showFinishGameModal.value = true;
+};
+
+const finishGame = () => {
+  localStorage.removeItem('players');
+  router.push('/');
+};
 </script>
 <template>
+  <!-- Finish game modal -->
   <VaModal
-    v-model="showModal"
-    :mobile-fullscreen="true"
+    v-model="showFinishGameModal"
+    title="Terminar juego"
+    :mobile-fullscreen="false"
+    @ok="finishGame()"
+  >
+    ¿Quieres terminar el juego?
+  </VaModal>
+
+  <!-- Big screen modal -->
+  <VaModal
+    v-model="showBigScreenModal"
     :close-button="true"
     :hide-default-actions="true"
   >
     <img :src="imgUrl" alt="notes overview" />
   </VaModal>
+
+  <!-- Clean notes modal -->
+  <VaModal
+    v-model="showCleanNotesModal"
+    title="Limpiar notas"
+    :mobile-fullscreen="false"
+    @ok="clearNotes()"
+  >
+    ¿Quieres limpiar todas las notas?
+  </VaModal>
   <section class="ActionsFooter">
+    <VaButton
+      round
+      icon="delete"
+      color="secondary"
+      size="medium"
+      @click="finishGameButtonClicked()"
+    />
     <VaButton
       round
       icon="visibility"
       color="info"
       size="large"
-      @click="visibilityButtonClicked()"
+      @click="showBigScreenButtonClicked()"
+    />
+    <VaButton
+      round
+      icon="replay"
+      color="secondary"
+      size="medium"
+      @click="cleanNotesButtonClicked()"
     />
   </section>
 </template>
@@ -45,7 +100,7 @@ const visibilityButtonClicked = () => {
 .ActionsFooter {
   display: flex;
   align-items: flex-start;
-  justify-content: center;
+  justify-content: space-around;
   padding: 12px 20px;
   position: fixed;
   width: 100%;
