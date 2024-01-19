@@ -33,21 +33,25 @@ const setActiveIcon = (event: Event) => {
         <VaButton
           color="secondary"
           icon="check"
+          size="large"
           @click="e => setActiveIcon(e)"
         ></VaButton>
         <VaButton
           color="secondary"
           icon="done_all"
+          size="large"
           @click="e => setActiveIcon(e)"
         ></VaButton>
         <VaButton
           color="secondary"
           icon="question_mark"
+          size="large"
           @click="e => setActiveIcon(e)"
         ></VaButton>
         <VaButton
           color="secondary"
           icon="star"
+          size="large"
           @click="e => setActiveIcon(e)"
         ></VaButton>
       </template>
