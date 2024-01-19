@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { ref } from 'vue';
-import { VaModal } from 'vuestic-ui';
+import { VaModal, VaButton } from 'vuestic-ui';
 import html2canvas from 'html2canvas';
 
 const showModal = ref<boolean>(false);

@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { ref } from 'vue';
-import { VaPopover } from 'vuestic-ui';
+import { VaPopover, VaButton } from 'vuestic-ui';
 
 const activeIcon = ref<string>('');
 
