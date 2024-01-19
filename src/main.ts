@@ -1,5 +1,5 @@
 import { createApp } from 'vue';
-import './style.css';
+import './style.scss';
 import App from './App.vue';
 import { createVuesticEssential, VaButton } from 'vuestic-ui';
 import 'vuestic-ui/styles/essential.css';

@@ -28,8 +28,6 @@ import defaultWhere from '∼/data/defaultWhere.json';
 
 <style lang="scss">
 .GameView {
-  height: calc($actions-footer-height + $main-table-height);
-
   .va-table-responsive {
     overflow: auto;
   }

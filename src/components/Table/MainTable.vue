@@ -38,7 +38,6 @@ defineProps<IMainTable>();
 <style lang="scss">
 .va-table {
   width: 100%;
-  height: $main-table-height;
   border: 1px solid;
 }
 </style>

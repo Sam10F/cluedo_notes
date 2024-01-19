@@ -62,8 +62,8 @@ button:focus-visible {
   width: 100%;
   margin: 0;
   text-align: center;
-  height: calc(100% + 50px);
   background-color: gainsboro;
+  padding-bottom: $actions-footer-height;
 }
 
 @media (prefers-color-scheme: light) {
