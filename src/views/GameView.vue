@@ -1,22 +1,38 @@
 <script setup lang="ts">
-import HelloWorld from '../components/HelloWorld.vue';
+import MainTable from '∼/components/Table/MainTable.vue';
+import ActionsFooter from '∼/components/ActionsFooter/ActionsFooter.vue';
+
+import defaultWho from '∼/data/defaultWho.json';
+import defaultWeapon from '∼/data/defaultWeapons.json';
+import defaultWhere from '∼/data/defaultWhere.json';
+import { onMounted, ref } from 'vue';
+import { IPlayer } from '∼/common/interfaces/IPlayer';
+
+const players = ref<IPlayer[]>([{ id: 1, name: '' }]);
+
+onMounted(() => {
+  players.value.push(...JSON.parse(localStorage['players']));
+});
 </script>
 
 <template>
-  <HelloWorld msg="Vite + Vue" />
+  <section class="GameView">
+    <MainTable
+      :players="players"
+      :who="defaultWho"
+      :weapon="defaultWeapon"
+      :where="defaultWhere"
+    />
+    <ActionsFooter />
+  </section>
 </template>
 
-<style scoped>
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.vue:hover {
-  filter: drop-shadow(0 0 2em #42b883aa);
+<style lang="scss">
+.GameView {
+  padding-bottom: $actions-footer-height;
+
+  .va-table-responsive {
+    overflow: auto;
+  }
 }
 </style>
