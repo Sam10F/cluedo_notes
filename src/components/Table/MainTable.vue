@@ -6,7 +6,7 @@ defineProps<IMainTable>();
 </script>
 <template>
   <div class="va-table-responsive">
-    <table class="va-table va-table--striped">
+    <table id="MainTable" class="va-table va-table--striped">
       <thead>
         <tr>
           <th>Jugadores</th>
