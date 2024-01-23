@@ -29,8 +29,6 @@ onMounted(() => {
 
 <style lang="scss">
 .GameView {
-  padding-bottom: $actions-footer-height;
-
   .va-table-responsive {
     overflow: auto;
   }

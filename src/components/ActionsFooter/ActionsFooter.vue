@@ -102,7 +102,7 @@ const finishGame = () => {
   align-items: flex-start;
   justify-content: space-around;
   padding: 12px 20px;
-  position: fixed;
+  position: sticky;
   width: 100%;
   height: $actions-footer-height;
   bottom: 0;
